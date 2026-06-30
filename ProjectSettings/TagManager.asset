@@ -8,6 +8,7 @@ TagManager:
   - Dirt
   - CinemachineTarget
   - player
+  - ui
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ public class Collectible : MonoBehaviour
 
     public float rotationSpeed = 1f;
     public GameObject particleEffect;
+    public AudioClip collectSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +24,7 @@ public class Collectible : MonoBehaviour
         if(c.CompareTag("player"))
         {
             Destroy(gameObject);
-
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
             Instantiate(particleEffect, transform.position, transform.rotation);
         }
 
