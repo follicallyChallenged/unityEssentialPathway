@@ -9,6 +9,8 @@ TagManager:
   - CinemachineTarget
   - player
   - ui
+  - cat
+  - wall
   layers:
   - Default
   - TransparentFX
