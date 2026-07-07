@@ -103,6 +103,13 @@ public class PlayerController2D : MonoBehaviour
             // Destroy the collectible
             Destroy(gameObject);
 
+            GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
+
+            foreach (GameObject wall in walls)
+            {
+                Destroy(wall);
+            }
+
             // Instantiate the particle effect
             Instantiate(onCollectEffect, transform.position, Quaternion.identity);
         }
