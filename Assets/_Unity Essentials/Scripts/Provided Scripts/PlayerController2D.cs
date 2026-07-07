@@ -104,8 +104,9 @@ public class PlayerController2D : MonoBehaviour
             Destroy(gameObject);
 
             // Instantiate the particle effect
-            Instantiate(onCollectEffect, transform.position, transform.rotation);
+            Instantiate(onCollectEffect, transform.position, Quaternion.identity);
         }
+
     }
 
 }
