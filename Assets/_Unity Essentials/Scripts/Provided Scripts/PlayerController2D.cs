@@ -2,12 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController2D : MonoBehaviour
 {
     // Public variables
     public float speed = 5f; // The speed at which the player moves
     public bool canMoveDiagonally = true; // Controls whether the player can move diagonally
-    
+    public GameObject onCollectEffect;
     public InputActionReference moveAction;
 
     // Private variables 
@@ -32,7 +33,7 @@ public class PlayerController2D : MonoBehaviour
     {
         // Get player input from keyboard or controller
         Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
-        
+
         float horizontalInput = moveInput.x;
         float verticalInput = moveInput.y;
 
@@ -91,4 +92,20 @@ public class PlayerController2D : MonoBehaviour
     {
         moveAction.action.Disable();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        // Check if the other object has a PlayerController2D component
+        if (other.CompareTag("cat"))
+        {
+
+            // Destroy the collectible
+            Destroy(gameObject);
+
+            // Instantiate the particle effect
+            Instantiate(onCollectEffect, transform.position, transform.rotation);
+        }
+    }
+
 }
